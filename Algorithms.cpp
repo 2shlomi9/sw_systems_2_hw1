@@ -1,7 +1,10 @@
 /*
- * Demo program for Exercise 2.
- * Author: Benjamin Saldman.
- */
+
+Author : shlomi zecharia
+ID : 315141242
+Email : 2shlomiariel9@gmail.com
+
+*/
 
 #include "Algorithms.hpp"
 #include <limits>
