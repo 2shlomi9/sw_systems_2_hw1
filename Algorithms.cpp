@@ -1,3 +1,8 @@
+/*
+ * Demo program for Exercise 2.
+ * Author: Benjamin Saldman.
+ */
+
 #include "Algorithms.hpp"
 #include <limits>
 #include <algorithm>
