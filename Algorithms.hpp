@@ -1,3 +1,8 @@
+/*
+ * Demo program for Exercise 2.
+ * Author: Benjamin Saldman.
+ */
+
 #ifndef ALGORITHMS_HPP
 #define ALGORITHMS_HPP
 
