@@ -318,8 +318,8 @@ namespace ariel {
             q.pop();
 
             // Iterate through adjacent vertices of the current vertex
-            for (size_t v = 0; v < n; ++v) {
-        if (matrix[u][v] && colors[v] == 0) { // If there is an edge and the adjacent vertex is uncolored
+        for (size_t v = 0; v < n; ++v) {
+            if (matrix[u][v] && colors[v] == 0) { // If there is an edge and the adjacent vertex is uncolored
             colors[v] = 3 - colors[u]; // Assign the opposite color to the adjacent vertex
             q.push(v); // Add the adjacent vertex to the queue
 
