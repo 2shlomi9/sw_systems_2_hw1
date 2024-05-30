@@ -233,14 +233,14 @@ namespace ariel {
 
 
 
-    std::string isContainsCycleHelper(const std::vector<std::vector<int>>& matrix, size_t v, std::vector<int>& p, std::vector<bool>& visited) {
+    std::string dfsCycleDetection(const std::vector<std::vector<int>>& matrix, size_t v, std::vector<int>& p, std::vector<bool>& visited) {
         size_t n = matrix.size();
         visited[v] = true;
         for (size_t i = 0; i < n; i++) {
             if (matrix[v][i] != 0) { // There is an edge between v and i
                 if (!visited[i]) {
                     p[i] = v;
-                    std::string result = isContainsCycleHelper(matrix, i, p, visited); // Update `v` to `i`
+                    std::string result = dfsCycleDetection(matrix, i, p, visited); // Update `v` to `i`
                     if (result != "0") {
                         return result;
                     }
@@ -279,7 +279,7 @@ namespace ariel {
         size_t n = matrix.size();
         std::vector<int> p(n, -1); // Initialize ps array
         std::vector<bool> visited(n, false); // Initialize ps array
-        return isContainsCycleHelper(matrix,v,p,visited);
+        return dfsCycleDetection(matrix,v,p,visited);
     }
 
 
