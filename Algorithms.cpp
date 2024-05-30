@@ -49,6 +49,9 @@ namespace ariel {
         }
     }
 
+
+    //------- isConnected implemation ---------
+
     bool Algorithms::isConnected(const Graph& graph) {
         const std::vector<std::vector<int>>& matrix = graph.getAdjacencyMatrix();
         size_t n = matrix.size();
@@ -97,7 +100,7 @@ namespace ariel {
 
 
 
-    // ---------------- q2 :  shortestPath  function ---------------------
+    // ---------------- q2 :  shortestPath function ---------------------
 
     
     
@@ -232,6 +235,7 @@ namespace ariel {
 
 
 
+    //------- helper function ---------
 
     std::string dfsCycleDetection(const std::vector<std::vector<int>>& matrix, size_t v, std::vector<int>& p, std::vector<bool>& visited) {
         size_t n = matrix.size();
@@ -271,7 +275,7 @@ namespace ariel {
     }
 
 
-
+    // ---------------- isContains implemation ---------------------
 
     std::string Algorithms::isContainsCycle(const Graph& graph) {
         size_t v =0; // Initialize the first vertex
@@ -286,9 +290,11 @@ namespace ariel {
 
 
 
-    // ---------------- q3 : isBipartite : ---------------------
+    // ---------------- q4 : isBipartite : ---------------------
 
 
+
+    // ---------------- isBipartite implemation ---------------------
 
     std::string Algorithms::isBipartite(const Graph& graph) {
         const std::vector<std::vector<int>>& matrix = graph.getAdjacencyMatrix();
