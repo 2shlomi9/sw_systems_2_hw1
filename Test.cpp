@@ -75,7 +75,7 @@ TEST_CASE("Test shortestPath")
         {0, 0, 1, 0, 0},
         {0, 0, 0, 0, 0}};
     g.loadGraph(graph2);
-    CHECK(ariel::Algorithms::shortestPath(g, 0, 4) == "-1");
+    CHECK(ariel::Algorithms::shortestPath(g, 0, 4) == "No path exists between 0 and 4");
 
     vector<vector<int>> graph3 = {
         {0, 1, 0, 1, 0},
@@ -85,7 +85,7 @@ TEST_CASE("Test shortestPath")
         {0, 1, 2, 1, 0}
     };
     g.loadGraph(graph3); // Load the graph to the object.
-    CHECK(ariel::Algorithms::shortestPath(g, 0, 4) == "No shortest path exists.");
+    CHECK(ariel::Algorithms::shortestPath(g, 0, 4) == "Detect negative cycle, no shortest path");
 
     vector<vector<int>> graph4 = {
         {0, -2, 0, 0},
@@ -108,7 +108,7 @@ TEST_CASE("Test isContainsCycle")
         {1, 0, 1},
         {0, 1, 0}};
     g.loadGraph(graph);
-    CHECK(ariel::Algorithms::isContainsCycle(g) == "0");
+    CHECK(ariel::Algorithms::isContainsCycle(g) == "No cycle found in the graph");
 
     vector<vector<int>> graph2 = {
         {0, 1, 1, 0, 0},
@@ -135,7 +135,7 @@ TEST_CASE("Test isContainsCycle")
         {0, 3, 0, 6},
         {0, 0, 6, 0}};
     g.loadGraph(graph4); // Load the graph to the object.
-    CHECK(ariel::Algorithms::isContainsCycle(g) == "0");
+    CHECK(ariel::Algorithms::isContainsCycle(g) == "No cycle found in the graph");
 
 }
 
@@ -160,7 +160,7 @@ TEST_CASE("Test isBipartite")
         {0, 0, 1, 0, 0},
         {0, 0, 0, 0, 0}};
     g.loadGraph(graph2);
-    CHECK(ariel::Algorithms::isBipartite(g) == "The graph is not bipartite (adjacent vertices have the same color).");
+    CHECK(ariel::Algorithms::isBipartite(g) == "The graph is not bipartite (adjacent vertices have the same color)");
 
     vector<vector<int>> graph3 = {
         {0, 1, 2, 0, 0},
@@ -169,7 +169,7 @@ TEST_CASE("Test isBipartite")
         {0, 0, 4, 0, 5},
         {0, 0, 0, 5, 0}};
     g.loadGraph(graph3);
-    CHECK(ariel::Algorithms::isBipartite(g) == "The graph is not bipartite (adjacent vertices have the same color).");
+    CHECK(ariel::Algorithms::isBipartite(g) == "The graph is not bipartite (adjacent vertices have the same color)");
 
     vector<vector<int>> graph4 = {
         {0, -2, 0, 0},
@@ -198,13 +198,21 @@ TEST_CASE("Test Negative Cycle"){
         {0, 0, 3, 0, 1},
         {0, 0, 0, -2, 0},
         {1, 0, 1, 0, -1},
-        {0, 1, 2, 1, 0}
-    };
+        {0, 1, 2, 1, 0}};
     g.loadGraph(graph2); // Load the graph to the object.
     CHECK(ariel::Algorithms::negativeCycle(g) == true);
 
+    vector<vector<int>> graph4 = {
+        {0, 0, 0, 0, 0},
+        {0, 0, 1, 0, 1},
+        {0, 0, 0, -2, 0},
+        {0, 0, 1, 0, -1},
+        {0, 1, 2, 1, 0}};
+    g.loadGraph(graph4); // Load the graph to the object.
+    CHECK(ariel::Algorithms::negativeCycle(g) == true);
+
     vector<vector<int>> graph3 = {
-        {0, 0, 0, 0},
+        {0, 1, 0, 0},
         {3, 0, 2, 0},
         {0, 0, 0, -3},
         {1, -1, 0, 0}};
