@@ -22,7 +22,7 @@ This project is part of the System Programming 2 course assignment at Ariel Univ
 ### Algorithm Implementations
 
 #### isConnected
-This function checks whether a given graph is connected or not. It uses Depth First Search (DFS) to traverse the graph and check if all vertices are reachable from each other. If any vertex is unreachable, the graph is considered disconnected.
+This function checks whether a given graph is strongly connected or not. It utilizes Depth First Search (DFS) to traverse the graph and verify if all vertices are reachable from each other. If any vertex is unreachable, or if the graph has multiple weakly connected components, it is considered not strongly connected. If the graph is directed, the function employs Kosaraju's algorithm to determine strong connectivity.
 
 #### shortestPath
 This function finds the shortest path between two vertices in the graph using the Bellman-Ford algorithm. It handles both directed and undirected graphs and returns the shortest path as a string.
@@ -34,11 +34,11 @@ This function checks whether the graph contains a cycle or not. It uses Depth Fi
 This function checks whether the graph is bipartite or not. It uses Breadth First Search (BFS) to color the vertices of the graph in two different colors, making sure that adjacent vertices have different colors. If the coloring is possible, the graph is bipartite.
 
 #### negativeCycle
-This function checks whether the graph contains a negative cycle. It uses the Floyd-Warshall algorithm to detect negative cycles in both directed and undirected graphs.
+This function checks whether the graph contains a negative cycle or not using the Bellman-Ford and Floyd-Warshall algorithms. It handles both directed and undirected graphs and returns 1 (true) if the graph contains a negative cycle.
 
 ### How Algorithms were Implemented
 
-The algorithms were implemented using various graph traversal and path-finding techniques such as Depth First Search (DFS), Breadth First Search (BFS), and the Bellman-Ford algorithm. Each algorithm was carefully designed to efficiently solve the specific problem it addresses.
+The algorithms were implemented using various graph traversal and path-finding techniques such as Depth First Search (DFS), Breadth First Search (BFS), Kosaraju's, Bellman-Ford and Floyd-Warshall. Each algorithm was carefully designed to efficiently solve the specific problem it addresses.
 
 ## Requirements
 
@@ -58,6 +58,9 @@ sudo apt-get install g++
 # Building all the necessary files & the main programs.
 make demo
 make test
+
+# Clean files(test, demo, *.o).
+make clean
 ```
 ## Running:
 
@@ -69,4 +72,3 @@ make test
 ./test
 
 ```
-`
