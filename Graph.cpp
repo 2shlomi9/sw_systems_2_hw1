@@ -19,7 +19,7 @@ namespace ariel{
         int n = graph.size();
         for (const auto& row : graph) {
             if (row.size() != n) {
-                throw std::invalid_argument("Invalid graph: The graph is not a square matrix.");
+                throw std::invalid_argument("Invalid graph: The graph is not a square matrix");
             }
         }
 
@@ -30,6 +30,14 @@ namespace ariel{
     
     void Graph::printGraph() const {
         int n = adjacencyMatrix.size();
+        bool isDirected = false;
+        for (size_t i = 0; i < n; ++i) {
+            for (size_t j = 0; j < i; ++j) {
+                if (adjacencyMatrix[i][j] != adjacencyMatrix[j][i]) {
+                    isDirected = true; // Asymmetric elements found, indicating a directed graph
+                }
+            }
+        }
         int edges = 0;
         for (const auto& row : adjacencyMatrix) {
             for (int val : row) {
@@ -38,7 +46,13 @@ namespace ariel{
                 }
             }
         }
-        std::cout << "Graph with " << n << " vertices and " << edges << " edges." << std::endl;
+        if(isDirected){
+            std::cout << "Directed graph with " << n << " vertices and " << edges << " edges" << std::endl;
+        }
+        else{
+            edges = edges/2;
+            std::cout << "Undirected graph with " << n << " vertices and " << edges << " edges" << std::endl;
+        }
     }
     
 }
